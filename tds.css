@@ -1,0 +1,118 @@
+Cái này là tdl.css
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+
+body {
+    /* Màu nền gradient tím xanh trendy */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    width: 100%;
+    max-width: 500px; /* Giới hạn chiều rộng cho đẹp */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden; /* Để ẩn các phần thừa khi animation */
+}
+
+/* --- Xử lý chuyển trang (Animation) --- */
+.screen {
+    display: none; /* Mặc định ẩn hết */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: block; /* Chỉ hiện trang có class active */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Style cho Input và Button --- */
+h2, h3 { text-align: center; margin-bottom: 20px; color: #333; }
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus, textarea:focus { border-color: #667eea; }
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover { background: #5a6fd6; }
+
+/* Link chuyển đổi đăng nhập/đăng ký */
+.link { color: #667eea; cursor: pointer; font-weight: bold; }
+.link:hover { text-decoration: underline; }
+
+/* --- Style riêng cho Trang chủ --- */
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.small-btn { width: auto; font-size: 0.8rem; padding: 5px 10px; background: #888; margin-left: 5px; }
+.logout-btn { background: #ff4757; }
+.todo-box { display: flex; gap: 10px; margin-bottom: 20px; }
+.todo-box button { width: 80px; }
+
+ul { list-style: none; }
+li {
+    background: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+li:hover { transform: scale(1.02); }
+li.completed span { text-decoration: line-through; color: #888; }
+
+.delete-btn { background: #ff4757; width: auto; padding: 5px 10px; font-size: 0.8rem; }
+
+/* --- Toast Message (Thông báo góc màn hình) --- */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    bottom: 30px;
+    right: 30px;
+}
+#toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+/* --- Responsive Mobile --- */
+@media (max-width: 600px) {
+    .container { height: 100vh; border-radius: 0; } 
+    header { flex-direction: column; gap: 10px; }
+}

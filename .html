@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Smart Todo List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tds.css">
+</head>
+<body>
+
+    <div class="container">
+        <section id="login-section" class="screen active">
+            <h2>Đăng Nhập</h2>
+            <input type="text" id="login-username" placeholder="Tên đăng nhập">
+            <input type="password" id="login-password" placeholder="Mật khẩu">
+            <button onclick="handleLogin()">Vào việc ngay</button>
+            <p>Chưa có tài khoản? <span class="link" onclick="showScreen('register-section')">Đăng ký tại đây</span></p>
+        </section>
+
+        <section id="register-section" class="screen">
+            <h2>Đăng Ký</h2>
+            <input type="text" id="reg-username" placeholder="Tên đăng nhập mới">
+            <input type="password" id="reg-password" placeholder="Mật khẩu">
+            <input type="password" id="reg-confirm-password" placeholder="Nhập lại mật khẩu">
+            <button onclick="handleRegister()">Đăng ký</button>
+            <p>Đã có tài khoản? <span class="link" onclick="showScreen('login-section')">Quay lại đăng nhập</span></p>
+        </section>
+
+        <section id="home-section" class="screen">
+            <header>
+                <h3>Xin chào, <span id="user-display">User</span>! 👋</h3>
+                <div class="menu">
+                    <button class="small-btn" onclick="showScreen('feedback-section')">Góp ý / Đổi pass</button>
+                    <button class="small-btn logout-btn" onclick="handleLogout()">Đăng xuất</button>
+                </div>
+            </header>
+            
+            <div class="todo-box">
+                <input type="text" id="todo-input" placeholder="Hôm nay cậu muốn làm gì?">
+                <button onclick="addTodo()">Thêm</button>
+            </div>
+
+            <ul id="todo-list">
+                </ul>
+        </section>
+
+        <section id="feedback-section" class="screen">
+            <h2>Cài Đặt & Góp Ý</h2>
+            
+            <div class="group">
+                <h4>Đổi mật khẩu</h4>
+                <input type="password" id="new-password" placeholder="Mật khẩu mới">
+                <button onclick="changePassword()">Lưu mật khẩu</button>
+            </div>
+
+            <div class="group">
+                <h4>Góp ý cho tụi mình</h4>
+                <textarea id="feedback-content" rows="4" placeholder="Nhập góp ý của cậu..."></textarea>
+                <button onclick="sendFeedback()">Gửi góp ý</button>
+            </div>
+
+            <button class="back-btn" onclick="showScreen('home-section')">Quay lại trang chủ</button>
+            </section>
+    </div>
+
+    <div id="toast">Thông báo ở đây</div>
+
+    <script src="st.js" defer></script>
+</body>
+</html>
